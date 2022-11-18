@@ -12,7 +12,8 @@ public class Eyelid : MonoBehaviour
     
     void Start()
     {
-        startPos = this.gameObject.transform.position.y;
+        startPos = this.transform.position.y;
+        Debug.Log(this.name + " : " + startPos);
         if (startPos > 0) endPos = 5.4f;
         else endPos = -5.4f;
     }
@@ -22,7 +23,7 @@ public class Eyelid : MonoBehaviour
         if(startMove)
             this.transform.position += (endPos - startPos) * Time.deltaTime * speed * new Vector3(0,1,0);
 
-        if ((endPos > 0 && endPos - this.transform.position.y > 0) 
+        if (startMove == true && (endPos > 0 && endPos - this.transform.position.y > 0) 
             || (endPos < 0 && endPos - this.transform.position.y < 0))
         {
             speed = 0;
@@ -30,11 +31,23 @@ public class Eyelid : MonoBehaviour
         }
     }
 
-    public IEnumerator PositionReset()
+    public IEnumerator PositionReset(float time, float waitingTime)
     {
         startMove = false;
-        this.transform.position = new Vector3(0, startPos, 0);
-        yield return new WaitForSeconds(1);
+        Vector3 currentPos = this.transform.position;
+
+        float tempTime = 0;
+
+        Debug.Log(this.name + " = ( current : " + currentPos + " ), ( start : " + startPos + " )");
+        yield return new WaitForSeconds(waitingTime / 2);
+        while(tempTime <= time)
+        {
+            this.transform.position += new Vector3(0, startPos - currentPos.y, 0) * Time.deltaTime / time;
+            tempTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        
+        yield return new WaitForSeconds(waitingTime/2);
         startMove = true;
     }
 }

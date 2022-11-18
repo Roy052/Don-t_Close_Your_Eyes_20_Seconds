@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MainSM : MonoBehaviour
 {
-    List<GameObject> objectList;
     [SerializeField] GameObject[] eyelids;
     [SerializeField] Text timeText;
     float time = 0, oneSecond = 0;
@@ -13,30 +12,40 @@ public class MainSM : MonoBehaviour
     int spaceTime = 0;
 
     int situationNum = 0;
+    bool setupEnd = false;
+    [SerializeField] GameObject screenImage;
+    Sprite mainSprite, midSprite;
+
     void Start()
     {
-        objectList = new List<GameObject>();
+        StartCoroutine(SetUp());
     }
 
     void Update()
     {
-        time += Time.deltaTime;
-        oneSecond += Time.deltaTime;
-        timeText.text = time.ToString("0.00");
+        if (setupEnd)
+        {
+            time += Time.deltaTime;
+            oneSecond += Time.deltaTime;
+            timeText.text = time.ToString("0.00");
+        }
+        
+        
         if(time >= 1 && time <= 1.001f)
         {
             eyelids[0].GetComponent<Eyelid>().startMove = true;
             eyelids[1].GetComponent<Eyelid>().startMove = true;
         }
 
-        if(time > 10 && onetime10sec == false)
+        if(time > 11 && onetime10sec == false)
         {
-            StartCoroutine(eyelids[0].GetComponent<Eyelid>().PositionReset());
-            StartCoroutine(eyelids[1].GetComponent<Eyelid>().PositionReset());
+            StartCoroutine(eyelids[0].GetComponent<Eyelid>().PositionReset(0.2f,1));
+            StartCoroutine(eyelids[1].GetComponent<Eyelid>().PositionReset(0.2f,1));
+            screenImage.GetComponent<SpriteRenderer>().sprite = midSprite;
             onetime10sec = true;
         }
         
-        if (Input.GetKeyDown(KeyCode.Space) && spaceTime < 15 && gameEnd == false)
+        if (Input.GetKeyDown(KeyCode.Space) && setupEnd && spaceTime < 15 && gameEnd == false)
         {
             spaceTime++;
             eyelids[0].transform.position += new Vector3(0, 1f, 0);
@@ -49,7 +58,7 @@ public class MainSM : MonoBehaviour
             oneSecond = 0;
         }
         
-        if(gameEnd == false && time >= 20)
+        if(gameEnd == false && time >= 21)
         {
             GameClear();
         }
@@ -63,5 +72,21 @@ public class MainSM : MonoBehaviour
     public void GameClear()
     {
         gameEnd = true;
+    }
+
+    IEnumerator SetUp()
+    {
+        mainSprite = Resources.Load<Sprite>("Arts/MainImage/" + situationNum);
+        midSprite = Resources.Load<Sprite>("Arts/MiddleImage/" + situationNum);
+
+        screenImage.GetComponent<SpriteRenderer>().sprite = mainSprite;
+
+        eyelids[0].transform.position = new Vector3(0, 5.4f, 0);
+        eyelids[1].transform.position = new Vector3(0, -5.4f, 0);
+
+        StartCoroutine(eyelids[0].GetComponent<Eyelid>().PositionReset(0.5f, 1));
+        StartCoroutine(eyelids[1].GetComponent<Eyelid>().PositionReset(0.5f, 1));
+        yield return new WaitForSeconds(1.5f);
+        setupEnd = true;
     }
 }
