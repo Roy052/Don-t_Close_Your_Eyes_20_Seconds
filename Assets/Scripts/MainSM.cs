@@ -16,6 +16,7 @@ public class MainSM : MonoBehaviour
     [SerializeField] GameObject screenImage;
     Sprite mainSprite, midSprite;
 
+    GameManager gm;
     void Start()
     {
         StartCoroutine(SetUp());
@@ -87,6 +88,7 @@ public class MainSM : MonoBehaviour
         StartCoroutine(eyelids[0].GetComponent<Eyelid>().PositionReset(0.5f, 1));
         StartCoroutine(eyelids[1].GetComponent<Eyelid>().PositionReset(0.5f, 1));
         yield return new WaitForSeconds(1.5f);
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         setupEnd = true;
     }
 }

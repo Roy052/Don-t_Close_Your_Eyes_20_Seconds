@@ -27,6 +27,7 @@ public class Eyelid : MonoBehaviour
             || (endPos < 0 && endPos - this.transform.position.y < 0))
         {
             speed = 0;
+            if(mainSM != null)
             mainSM.GameOver();
         }
     }
