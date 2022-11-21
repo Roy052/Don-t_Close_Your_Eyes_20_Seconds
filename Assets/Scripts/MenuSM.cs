@@ -19,7 +19,7 @@ public class MenuSM : MonoBehaviour
     {
         screenImages = new List<Sprite>();
         screenImages.AddRange(Resources.LoadAll<Sprite>("Arts/MainImage/"));
-        screen.sprite = screenImages[Random.Range(0, screenImages.Count)];
+        //screen.sprite = screenImages[Random.Range(0, screenImages.Count)];
         eyelids[0].GetComponent<Eyelid>().speed = 1;
         eyelids[1].GetComponent<Eyelid>().speed = 1;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();

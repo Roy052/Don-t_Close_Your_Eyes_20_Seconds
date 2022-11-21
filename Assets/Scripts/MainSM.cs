@@ -29,6 +29,7 @@ public class MainSM : MonoBehaviour
             time += Time.deltaTime;
             oneSecond += Time.deltaTime;
             timeText.text = time.ToString("0.00");
+            gm.AudioON(0, situationNum);
         }
         
         
@@ -43,6 +44,7 @@ public class MainSM : MonoBehaviour
             StartCoroutine(eyelids[0].GetComponent<Eyelid>().PositionReset(0.2f,1));
             StartCoroutine(eyelids[1].GetComponent<Eyelid>().PositionReset(0.2f,1));
             screenImage.GetComponent<SpriteRenderer>().sprite = midSprite;
+            gm.AudioON(1, situationNum);
             onetime10sec = true;
         }
         
@@ -68,15 +70,19 @@ public class MainSM : MonoBehaviour
     public void GameOver()
     {
         gameEnd = true;
+        gm.AudioON(3, situationNum);
     }
 
     public void GameClear()
     {
         gameEnd = true;
+        gm.AudioON(2, situationNum);
     }
 
     IEnumerator SetUp()
     {
+        situationNum = Random.Range(0, 4);
+
         mainSprite = Resources.Load<Sprite>("Arts/MainImage/" + situationNum);
         midSprite = Resources.Load<Sprite>("Arts/MiddleImage/" + situationNum);
 

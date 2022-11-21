@@ -473,9 +473,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  mainAudio: []
-  midAudio: []
-  endAudio: []
+  mainAudio:
+  - {fileID: 8300000, guid: e41c88350383481429591e7e367a856a, type: 3}
+  - {fileID: 8300000, guid: 7168fd95f6d52264684e0dc5d4b2bd98, type: 3}
+  - {fileID: 8300000, guid: c8af5fb74782ce0439438f28774a04e6, type: 3}
+  - {fileID: 8300000, guid: 3cd8f00761da1ae4295d842a7a8964f1, type: 3}
+  midAudio:
+  - {fileID: 8300000, guid: 9c9a96eaf9a2f184387b79e184bcf004, type: 3}
+  - {fileID: 8300000, guid: 3cd8f00761da1ae4295d842a7a8964f1, type: 3}
+  - {fileID: 8300000, guid: 98c64bedc5ad2fd4084467f9bd80a9f5, type: 3}
+  - {fileID: 8300000, guid: cd94aa8fcf9c2e143af74865013452c5, type: 3}
+  endAudio:
+  - {fileID: 8300000, guid: 8ec928c7c95086442b1fb39d20499815, type: 3}
+  - {fileID: 8300000, guid: 110e3e11ee704fc4db714034c124b798, type: 3}
+  - {fileID: 8300000, guid: 690f4fbace2fc7f4299180ebad454b43, type: 3}
+  - {fileID: 8300000, guid: 690f4fbace2fc7f4299180ebad454b43, type: 3}
   overAudio: []
 --- !u!4 &1053240856
 Transform:
@@ -725,7 +737,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 0}
+  m_BackGroundColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
