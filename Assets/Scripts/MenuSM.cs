@@ -15,15 +15,11 @@ public class MenuSM : MonoBehaviour
     [SerializeField] GameObject[] menuBtn;
 
     GameManager gm;
+
+    Coroutine tempCoroutine;
     void Start()
     {
-        screenImages = new List<Sprite>();
-        screenImages.AddRange(Resources.LoadAll<Sprite>("Arts/MainImage/"));
-        //screen.sprite = screenImages[Random.Range(0, screenImages.Count)];
-        eyelids[0].GetComponent<Eyelid>().speed = 1;
-        eyelids[1].GetComponent<Eyelid>().speed = 1;
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        setupEnd = true;
+        StartCoroutine(Setup());
     }
 
     void Update()
@@ -33,7 +29,7 @@ public class MenuSM : MonoBehaviour
 
         if(time >= 2)
         {
-            StartCoroutine(Change());
+            tempCoroutine = StartCoroutine(Change());
             time = 0;
         }
     }
@@ -43,6 +39,8 @@ public class MenuSM : MonoBehaviour
         isChange = true;
         eyelids[0].GetComponent<Eyelid>().startMove = true;
         eyelids[1].GetComponent<Eyelid>().startMove = true;
+        eyelids[0].GetComponent<Eyelid>().speed = 1;
+        eyelids[1].GetComponent<Eyelid>().speed = 1;
 
         yield return new WaitForSeconds(3);
         screen.sprite = screenImages[Random.Range(0, screenImages.Count)];
@@ -53,19 +51,45 @@ public class MenuSM : MonoBehaviour
 
         eyelids[0].GetComponent<Eyelid>().startMove = false;
         eyelids[1].GetComponent<Eyelid>().startMove = false;
-        eyelids[0].GetComponent<Eyelid>().speed = 1;
-        eyelids[1].GetComponent<Eyelid>().speed = 1;
+        eyelids[0].GetComponent<Eyelid>().speed = 0;
+        eyelids[1].GetComponent<Eyelid>().speed = 0;
         isChange = false;
+    }
+
+    IEnumerator Setup()
+    {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        eyelids[0].transform.position = new Vector3(0, 5.4f, 0);
+        eyelids[1].transform.position = new Vector3(0, -5.4f, 0);
+
+        screenImages = new List<Sprite>();
+        screenImages.AddRange(Resources.LoadAll<Sprite>("Arts/MainImage/"));
+        screen.sprite = screenImages[Random.Range(0, screenImages.Count)];
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(eyelids[0].GetComponent<Eyelid>().PositionReset(0.5f, 0.5f));
+        StartCoroutine(eyelids[1].GetComponent<Eyelid>().PositionReset(0.5f, 0.5f));
+        eyelids[0].GetComponent<Eyelid>().speed = 0;
+        eyelids[1].GetComponent<Eyelid>().speed = 0;
+        yield return new WaitForSeconds(1.2f);
+        
+
+        setupEnd = true;
     }
 
     public IEnumerator GameStart()
     {
         isStart = true;
+        if(tempCoroutine != null)
+        StopCoroutine(tempCoroutine);
+
         for (int i = 0; i < 2; i++)
         {
             menuBtn[i].GetComponent<MenuBtn>().clicked = true;
             StartCoroutine(FadeManager.FadeOut(menuBtn[i].GetComponent<SpriteRenderer>(), 0.5f));
             eyelids[i].GetComponent<Eyelid>().startMove = true;
+            eyelids[i].GetComponent<Eyelid>().speed = 1;
         }
        
         yield return new WaitForSeconds(2);

@@ -7,12 +7,14 @@ public class GameManager : MonoBehaviour
 {
     //Unique GameManager
     private static GameManager gameManagerInstance;
-    [SerializeField] AudioSource audioSource;
+    AudioSource audioSource;
+    [SerializeField] AudioClip menuAudio;
     [SerializeField] AudioClip[] mainAudio, midAudio, endAudio, overAudio;
 
     void Awake()
     {
         DontDestroyOnLoad(this);
+        audioSource = this.GetComponent<AudioSource>();
         if (gameManagerInstance == null)
         {
             gameManagerInstance = this;
@@ -25,12 +27,16 @@ public class GameManager : MonoBehaviour
 
     public void MenuToMain()
     {
+        audioSource.Stop();
         SceneManager.LoadScene("Main");
     }
 
     public void MainToMenu()
     {
+        audioSource.Stop();
         SceneManager.LoadScene("Menu");
+        audioSource.clip = menuAudio;
+        audioSource.Play();
     }
 
     public void GameQuit()
@@ -44,7 +50,7 @@ public class GameManager : MonoBehaviour
             audioSource.clip = mainAudio[number];
         else if (type == 1)
             audioSource.clip = midAudio[number];
-        else if (type == 2)
+        else if (type == 2) 
             audioSource.clip = endAudio[number];
         else
             audioSource.clip = overAudio[number];

@@ -7,15 +7,18 @@ public class Eyelid : MonoBehaviour
     [SerializeField] MainSM mainSM;
 
     float startPos, endPos;
-    public float speed = 0.5f;
+    public float speed = 0;
     public bool startMove = false;
-    
+    public bool gameEnd;
+   
     void Start()
     {
         startPos = this.transform.position.y;
         Debug.Log(this.name + " : " + startPos);
         if (startPos > 0) endPos = 5.4f;
         else endPos = -5.4f;
+        speed = 0.3f;
+        gameEnd = false;
     }
 
     void Update()
@@ -27,8 +30,12 @@ public class Eyelid : MonoBehaviour
             || (endPos < 0 && endPos - this.transform.position.y < 0))
         {
             speed = 0;
-            if(mainSM != null)
-            mainSM.GameOver();
+            if(mainSM != null && gameEnd == false)
+            {
+                gameEnd = true;
+                StartCoroutine(mainSM.GameOver());
+            }
+               
         }
     }
 
