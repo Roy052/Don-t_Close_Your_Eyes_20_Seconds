@@ -1,7 +1,7 @@
 # Don't Close Your Eyes for 20 Seconds
 <div>
     <h2> 게임 정보 </h2>
-    <img src = "https://img.itch.zone/aW1nLzEwMTQ1MzM4LnBuZw==/347x500/fmXF5A.png"><br>
+    <img src = "https://img.itch.zone/aW1nLzEwNTk3Mzg2LnBuZw==/347x500/gP8twm.png"><br>
     <img src="https://img.shields.io/badge/Unity-yellow?style=flat-square&logo=Unity&logoColor=FFFFFF"/>
     <img src="https://img.shields.io/badge/Clicker-gray"/>
     <h4> 개발 일자 : 2022.11 <br><br>
