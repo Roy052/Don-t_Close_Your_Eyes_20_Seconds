@@ -120,8 +120,3 @@ public IEnumerator PositionReset(float time, float waitingTime)
 }
 }
 ```
-        
-```csharp
-       int main(void){
-        }
-```
