@@ -21,28 +21,30 @@
   <div>
     <h2> 게임 스크린샷 </h2>
       <table>
-        <td><img src = "https://img.itch.zone/aW1hZ2UvMTcyMTk0Mi8xMDE3ODIzMy5wbmc=/347x500/HZXSXh.png"></td>
-        <td><img src = "https://img.itch.zone/aW1hZ2UvMTcyMTk0Mi8xMDE3ODIzNC5wbmc=/347x500/JO0Ivk.png"></td>
-        <td><img src = "https://img.itch.zone/aW1hZ2UvMTcyMTk0Mi8xMDE3ODIzNS5wbmc=/347x500/L79u2g.png"></td>
+        <td><img src = "https://img.itch.zone/aW1hZ2UvMTgwNDU1MC8xMDY2ODIyMy5wbmc=/347x500/017XmA.png"></td>
+        <td><img src = "https://img.itch.zone/aW1hZ2UvMTgwNDU1MC8xMDY2ODIyNC5wbmc=/347x500/Plhyps.png"></td>
+        <td><img src = "https://img.itch.zone/aW1hZ2UvMTgwNDU1MC8xMDY2ODIyNS5wbmc=/347x500/Ntvjsb.png"></td>
       </table>
   </div>
     <div>
     <h2> 게임 플레이 영상 </h2>
-    https://youtu.be/59yCcC-kM4E
+    https://youtu.be/P5pWeMf9Fr0
   </div>
   <div>
     <h2> 배운 점 </h2>
-      처음으로 원래 기획만큼 게임을 제작했다.<br><br>
-      물론 기간이 조금 길어지긴 했지만 아이디어를 완전히 구현해보는 경험이 되었다.<br><br>
-      json을 활용한 데이터 저장 불러오기 기능을 구현하며 System IO에 대해 알게 되었다.<br><br>
-      또한 파일을 로드할 때 생기는 부하를 고려한 코루틴을 활용한 애니메이션을 만들고 이를 모듈화 해보았다.<br><br>
+      유니티 내장 함수를 이용해 다른 폴더 안의 Sprite를 불러오고 출력해보았다.<br><br>
+      
   </div>
   <div>
     <h2> 수정할 점 </h2>
-      왼쪽 편에 활동에 따른 애니메이션을 추가한다.
+      폭탄 터지는 시간과 게임이 끝나는 시간 간의 오차.<br><br>
+      추가적인 컨텐츠
    <h2> Design Picture </h2>
    <table>
-        <td><img src = "https://postfiles.pstatic.net/MjAyMjEwMDJfMjk2/MDAxNjY0Njc2MzY5OTc5.e0zxnwIelrGkbocZWSokgdMbbhFBPVnP0MyToqpH3eYg.3J6IUib14K1U9JXzR-GFlaajXtqsRauJZSh_RKb8XUkg.JPEG.tdj04131/20221002%EF%BC%BF110334.jpg?type=w773" height = 500></td>
+        <td><img src = "https://postfiles.pstatic.net/MjAyMjEyMDJfMTcz/MDAxNjY5OTQ1MTYyNTcz.xRGtDzHsxcJYazZlDcthq5OryoHRCOAIo3IhGdm3-4sg.GZeppaeShzgz5M3EIWUjWJXTdv0lI3WDgx6GlKBlis8g.JPEG.tdj04131/KakaoTalk_20221202_103401185.jpg?type=w773" height = 500></td>
+        <td><img src = "https://postfiles.pstatic.net/MjAyMjEyMDJfNDYg/MDAxNjY5OTQ1MTYyNTU0.1gzPKWdthy-1HV3kGPMn-xFlpEmNQUljsOlQcorqdpwg.WTibCAZObK__76rH2hzr5SLjkZHd9qkVYY0WdQ_0MQ4g.JPEG.tdj04131/KakaoTalk_20221202_103401185_01.jpg?type=w773" height = 500></td>
       </table>
   </div>
-
+   <div>
+   
+   </div>
